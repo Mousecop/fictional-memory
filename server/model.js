@@ -68,3 +68,9 @@ function createBlogPostsModel() {
 
 
 module.exports = {BlogPosts: createBlogPostsModel()};
+
+
+
+
+
+
