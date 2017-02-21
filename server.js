@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const blogrouter = require('./blogrouter')
+const blogrouter = require('./server/blogrouter')
 
 app.use(express.static(path.join(__dirname, '../client')));
 app.use('/blog-posts', blogrouter);
