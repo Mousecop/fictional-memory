@@ -11,35 +11,34 @@ app.listen(process.env.PORT || 8080, () => console.log(
   `Your app is listening on port ${process.env.PORT || 8080 }`));
 
 
+
+ let server;
+ 
   function runServer() {
+  const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
-    mongoose.connect(DATABASE_URL, err => {
-      if (err) {
-        return reject(err);
-      }
-      server = app.listen(PORT, () => {
-        console.log(`Your app is listening on port ${PORT}`);
-        resolve();
-      })
-      .on('error', err => {
-        mongoose.disconnect();
-        reject(err);
-      });
+    app.listen(port, () => {
+      console.log(`Your app is listening on port ${port}`);
+      resolve();
+    })
+    .on('error', err => {
+      reject(err);
     });
   });
 }
 
+
 function closeServer() {
-  return mongoose.disconnect().then(() => {
-     return new Promise((resolve, reject) => {
-       console.log('Closing server');
-       server.close(err => {
-           if (err) {
-               return reject(err);
-           }
-           resolve();
-       });
-     });
+  return new Promise((resolve, reject) => {
+    console.log('Closing server');
+    server.close(err => {
+      if (err) {
+        reject(err);
+        // so we don't also call `resolve()`
+        return;
+      }
+      resolve();
+    });
   });
 }
 
