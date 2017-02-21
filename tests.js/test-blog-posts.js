@@ -21,6 +21,13 @@ describe('Blog Posts', function() {
             .get('/blog-posts')
             .then(function(res) {
                 res.should.have.status(200);
+                res.should.be.json;
+                res.body.should.be.a('array');
+                const expectedKeys = ['id', 'title', 'content', 'author'];
+                res.body.forEach(function(item) {
+                    item.should.be.a('object');
+                    item.should.include.keys(expectedKeys);
+                });
             });
     });
 });
