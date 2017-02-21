@@ -4,7 +4,7 @@
   "description": "BlogPost application",
   "main": "server.js",
   "scripts": {
-    "test": "npm test",
+    "test": "",
     "start": "node server.js"
   },
   "dependencies": {
