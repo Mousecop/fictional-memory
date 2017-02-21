@@ -29,16 +29,16 @@ app.use('/blog-posts', blogrouter);
 function closeServer() {
   return new Promise((resolve, reject) => {
     console.log('Closing server');
-    server.close(err => {
-      if (err) {
-        reject(err);
-        // so we don't also call `resolve()`
-        return;
-      }
+    // server.close(err => {
+    //   if (err) {
+    //     reject(err);
+    //     // so we don't also call `resolve()`
+    //     return;
+    //   }
       resolve();
     });
-  });
-}
+  };
+
 
 // if server.js is called directly (aka, with `node server.js`), this block
 // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
