@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 
 
-describe('Blog Posts' function() {
+describe('Blog Posts', function() {
     before(function() {
         return runServer();
     });
