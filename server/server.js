@@ -7,13 +7,11 @@ const blogrouter = require('./blogrouter')
 app.use(express.static(path.join(__dirname, '../client')));
 app.use('/blog-posts', blogrouter);
 
-app.listen(process.env.PORT || 8080, () => console.log(
-  `Your app is listening on port ${process.env.PORT || 8080 }`));
 
 
 
  let server;
- 
+
   function runServer() {
   const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
