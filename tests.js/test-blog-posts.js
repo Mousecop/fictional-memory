@@ -21,7 +21,7 @@ describe('Blog Posts' function() {
             .get('/blog-posts')
             .then(function(res) {
                 res.should.have.status(200);
-            })
+            });
     });
 });
 
